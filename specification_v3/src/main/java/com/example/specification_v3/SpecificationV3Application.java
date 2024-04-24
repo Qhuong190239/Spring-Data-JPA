@@ -2,7 +2,7 @@ package com.example.specification_v3;
 
 import com.example.specification_v3.entities.Coffee;
 import com.example.specification_v3.repositories.CoffeeRepository;
-import com.example.specification_v3.services.CoffeeService;
+import com.example.specification_v3.specification.CoffeeSpecification;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -18,19 +18,19 @@ public class SpecificationV3Application {
     }
 
     private final CoffeeRepository coffeeRepository;
-    private final CoffeeService coffeeService;
+    private final CoffeeSpecification coffeeSpecification;
 
     @Bean
     CommandLineRunner run() {
         return args -> {
             // Get Coffee by ID
-            System.out.println("Get Coffee By ID = 10");
-            System.out.println(coffeeService.getCoffeeById(3));
+            System.out.println("Get Coffee By ID = 3");
+            System.out.println(coffeeSpecification.getCoffeeById(3));
             System.out.println("============================");
 
             // Get Coffee by Name Like and Type
             System.out.println("Get Coffee by Type = ICE");
-            System.out.println(coffeeService.getCoffeeByComplexCondition("name-%", Coffee.CoffeeType.ICE));
+            System.out.println(coffeeSpecification.getCoffeeByComplexCondition("name-%", Coffee.CoffeeType.ICE));
             System.out.println("============================");
         };
     }
